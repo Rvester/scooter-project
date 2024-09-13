@@ -3,25 +3,23 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
-  extends: 'standard',
+  extends: "standard",
   overrides: [
     {
       env: {
-        node: true
+        node: true,
+        jest: true,
       },
-      files: [
-        '.eslintrc.{js,cjs}'
-      ],
+      files: [".eslintrc.{js,cjs}"],
       parserOptions: {
-        sourceType: 'script'
-      }
-    }
+        sourceType: "script",
+      },
+    },
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: "latest",
   },
-  rules: {
-  }
-}
+  rules: {},
+};
