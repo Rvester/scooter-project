@@ -1,18 +1,33 @@
 const User = require("../src/User");
 
-const user = new User("Joe Bloggs", "test123", 21);
+describe("User class tests", () => {
+  test("User should initialize with correct properties", () => {
+    const user = new User("John Doe", "password123", 25);
 
-// User tests here
-describe("User property tests", () => {
-  // test username
-  test("username should be a string", () => {
-    expect(typeof user.username).toBe("string");
+    expect(user.username).toBe("John Doe");
+    expect(user.password).toBe("password123");
+    expect(user.age).toBe(25);
+    expect(user.loggedIn).toBe(false);
   });
-  // test password
 
-  // test age
+  test("User should login with correct password", () => {
+    const user = new User("John Doe", "password123", 25);
+
+    user.login("password123");
+    expect(user.loggedIn).toBe(true);
+  });
+
+  test("User should not login with incorrect password", () => {
+    const user = new User("John Doe", "password123", 25);
+
+    expect(() => user.login("wrongPassword")).toThrow("Incorrect password.");
+  });
+
+  test("User should logout successfully", () => {
+    const user = new User("John Doe", "password123", 25);
+
+    user.login("password123");
+    user.logout();
+    expect(user.loggedIn).toBe(false);
+  });
 });
-
-// test login
-
-// test logout
